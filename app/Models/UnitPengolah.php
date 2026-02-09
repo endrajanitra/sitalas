@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\User;
+use App\Models\DokumenPenting;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,4 +37,14 @@ class UnitPengolah extends Model
         'sub_biro' => 'boolean',
         'active' => 'boolean',
     ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'direktorat_id');
+    }
+
+     public function dokumen_pentings()
+    {
+        return $this->hasMany(DokumenPenting::class, 'direktorat_id');
+    }
 }
