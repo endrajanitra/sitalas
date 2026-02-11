@@ -43,6 +43,7 @@ class UnitPengolahsTable
                 IconColumn::make('sub_biro')
                     ->boolean(),
                 IconColumn::make('active')
+                    ->label('Aktif')
                     ->boolean(),
                 TextColumn::make('created_at')
                     ->dateTime()

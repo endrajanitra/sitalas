@@ -36,6 +36,7 @@ class UnitPengolahForm
                 Toggle::make('sub_biro')
                     ->required(),
                 Toggle::make('active')
+                    ->label('Aktif')
                     ->required(),
             ]);
     }
