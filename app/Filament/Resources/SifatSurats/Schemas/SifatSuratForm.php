@@ -12,7 +12,7 @@ class SifatSuratForm
         return $schema
             ->components([
                 TextInput::make('sifat_surat')
-                                                        
+                    ->label('Sifat Surat')                                       
                     ->required(),
             ]);
     }

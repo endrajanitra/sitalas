@@ -15,6 +15,7 @@ class SifatSuratsTable
         return $table
             ->columns([
                 TextColumn::make('sifat_surat')
+                    ->label('Sifat Surat')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
