@@ -17,12 +17,16 @@ class DokumenPentingForm
         return $schema
             ->components([
                 DatePicker::make('tgl_terima')
+                    ->label('Tanggal Terima')
                     ->required(),
                 DatePicker::make('tgl_surat')
+                    ->label('Tanggal Surat')
                     ->required(),
                 TextInput::make('no_surat')
+                    ->label('No Surat')
                     ->required(),
                 TextInput::make('jumlah_sk')
+                    ->label('Jumlah Sk')
                     ->required()
                     ->numeric(),
                 Select::make('direktorat_id')
@@ -36,16 +40,18 @@ class DokumenPentingForm
                 TextInput::make('perihal')
                     ->required(),
                 TextInput::make('kontak_person')
+                    ->label('Kontak Person')
                     ->required(),
                 Textarea::make('catatan')
                     ->required()
                     ->columnSpanFull(),
                 FileUpload::make('upload_file')
-                    ->label('Upluad File')
+                    ->label('Upload File')
                     ->directory('upload_file')
                     ->image()
                     ->maxSize(2048),
                 Toggle::make('kirim_ke_tujuan')
+                    ->label('Kirim Ke Tujuan')
                     ->required(),
             ]);
     }

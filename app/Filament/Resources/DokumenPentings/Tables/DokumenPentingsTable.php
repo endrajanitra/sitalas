@@ -16,17 +16,22 @@ class DokumenPentingsTable
         return $table
             ->columns([
                 TextColumn::make('tgl_terima')
+                    ->label('Tanggal Terima')
                     ->date()
                     ->sortable(),
                 TextColumn::make('tgl_surat')
+                    ->label('Tanggal Surat')
                     ->date()
                     ->sortable(),
                 TextColumn::make('no_surat')
+                    ->label('No Surat')
                     ->searchable(),
                 TextColumn::make('jumlah_sk')
+                    ->label('Jumlah Sk')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('direktorat_id')
+                    ->label('Tujuan')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('pengirim')
@@ -34,10 +39,13 @@ class DokumenPentingsTable
                 TextColumn::make('perihal')
                     ->searchable(),
                 TextColumn::make('kontak_person')
+                    ->label('Kontak Person')
                     ->searchable(),
                 TextColumn::make('upload_file')
+                    ->label('Upload File')
                     ->searchable(),
                 IconColumn::make('kirim_ke_tujuan')
+                    ->label('Kirim Ke Tujuan')
                     ->boolean(),
                 TextColumn::make('created_at')
                     ->dateTime()
