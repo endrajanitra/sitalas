@@ -25,6 +25,9 @@ class User extends Authenticatable
         'direktorat_id',
         'file_ttd',
         'no_hp',
+        'tkls',
+        'sopd',
+        'last_login',
         'active',
     ];
 

@@ -15,6 +15,9 @@ return new class extends Migration
             $table->unsignedBigInteger('direktorat_id')->nullable()->index();
             $table->string('file_ttd')->nullable();
             $table->string('no_hp', 20)->nullable();
+            $table->string('tkls')->nullable();
+            $table->string('sopd')->nullable();
+            $table->timestamp('last_login')->nullable();
             $table->boolean('active')->default(true);
         });
     }
@@ -28,8 +31,10 @@ return new class extends Migration
             $table->dropColumn([
                 'direktorat_id',
                 'file_ttd',
-                'sopd',
                 'no_hp',
+                'tkls',
+                'sopd',
+                'last_login',
                 'active',
             ]);
         });
