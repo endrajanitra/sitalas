@@ -26,10 +26,7 @@ class DokumenPentingsTable
                 TextColumn::make('no_surat')
                     ->label('No Surat')
                     ->searchable(),
-                TextColumn::make('jumlah_sk')
-                    ->label('Jumlah Sk')
-                    ->numeric()
-                    ->sortable(),
+                
                 TextColumn::make('direktorat_id')
                     ->label('Tujuan')
                     ->numeric()
@@ -38,9 +35,7 @@ class DokumenPentingsTable
                     ->searchable(),
                 TextColumn::make('perihal')
                     ->searchable(),
-                TextColumn::make('kontak_person')
-                    ->label('Kontak Person')
-                    ->searchable(),
+                
                 TextColumn::make('upload_file')
                     ->label('Upload File')
                     ->searchable(),
