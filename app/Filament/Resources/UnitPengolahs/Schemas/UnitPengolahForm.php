@@ -16,7 +16,7 @@ class UnitPengolahForm
                     ->required(),
                 TextInput::make('kode_surat'),
                 TextInput::make('urutan')
-                    ->required()
+                    ->nullable()
                     ->numeric()
                     ->default(0),
                 TextInput::make('no_hp_1'),
