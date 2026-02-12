@@ -9,6 +9,7 @@ use App\Filament\Resources\Proposals\Schemas\ProposalForm;
 use App\Filament\Resources\Proposals\Tables\ProposalsTable;
 use App\Models\Proposal;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -17,6 +18,8 @@ use Filament\Tables\Table;
 class ProposalResource extends Resource
 {
     protected static ?string $model = Proposal::class;
+
+    protected static string | UnitEnum | null $navigationGroup = 'Proposal';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 

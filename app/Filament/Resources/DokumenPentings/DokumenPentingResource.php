@@ -9,6 +9,7 @@ use App\Filament\Resources\DokumenPentings\Schemas\DokumenPentingForm;
 use App\Filament\Resources\DokumenPentings\Tables\DokumenPentingsTable;
 use App\Models\DokumenPenting;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -17,6 +18,8 @@ use Filament\Tables\Table;
 class DokumenPentingResource extends Resource
 {
     protected static ?string $model = DokumenPenting::class;
+
+    protected static string | UnitEnum | null $navigationGroup = 'Dokumen Penting';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
