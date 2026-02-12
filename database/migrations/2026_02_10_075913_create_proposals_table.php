@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal');
             $table->string('no_reg');
-            $table->unsignedBigInteger('direktorat_id')->nullable()->index();
+            $table->unsignedBigInteger('direktorat_id')->index();
             $table->string('pengirim');
-            $table->string('perihal');
-            $table->text('alamat');
+            $table->string('perihal')->nullable();
+            $table->text('alamat')->nullable();
             $table->timestamps();
         });
     }

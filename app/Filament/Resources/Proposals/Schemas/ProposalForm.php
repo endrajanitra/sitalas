@@ -23,13 +23,13 @@ class ProposalForm
                     ->relationship('unitPengolah', 'direktorat')
                     ->searchable()
                     ->preload()
-                    ->nullable(),
+                    ->required(),
                 TextInput::make('pengirim')
                     ->required(),
                 TextInput::make('perihal')
-                    ->required(),
+                    ->nullable(),
                 Textarea::make('alamat')
-                    ->required()
+                    ->nullable()
                     ->columnSpanFull(),
             ]);
     }
