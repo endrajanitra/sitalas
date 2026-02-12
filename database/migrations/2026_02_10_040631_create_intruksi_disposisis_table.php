@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('intruksi_disposisis', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('direktorat_id')->nullable()->index();
-            $table->string('intruksi');
-            $table->integer('urutan');
+            $table->string('intruksi')->nullable();
+            $table->integer('urutan')->nullable();
             $table->boolean('active')->default(false);
             $table->timestamps();
         });

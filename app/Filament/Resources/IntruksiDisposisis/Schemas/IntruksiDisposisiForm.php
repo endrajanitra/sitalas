@@ -18,15 +18,15 @@ class IntruksiDisposisiForm
                     ->relationship('unitPengolah', 'direktorat')
                     ->searchable()
                     ->preload()
-                    ->nullable(),
-                TextInput::make('intruksi')
                     ->required(),
+                TextInput::make('intruksi')
+                    ->nullable(),
                 TextInput::make('urutan')
-                    ->required()
+                    ->nullable()
                     ->numeric(),
                 Toggle::make('active')
                     ->label('Aktif')
-                    ->required(),
+                    ->nullable(),
             ]);
     }
 }
