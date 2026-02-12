@@ -27,21 +27,19 @@ class DokumenPentingForm
                     ->required(),
                 TextInput::make('jumlah_sk')
                     ->label('Jumlah Sk')
-                    ->required()
                     ->numeric(),
                 Select::make('direktorat_id')
                     ->label('Tujuan')
                     ->relationship('unitPengolah', 'direktorat')
                     ->searchable()
                     ->preload()
-                    ->nullable(),
-                TextInput::make('pengirim')
                     ->required(),
+                TextInput::make('pengirim')
+                    ->label('Pengirim'),
                 TextInput::make('perihal')
                     ->required(),
                 TextInput::make('kontak_person')
-                    ->label('Kontak Person')
-                    ->required(),
+                    ->label('Kontak Person'),
                 Textarea::make('catatan')
                     ->required()
                     ->columnSpanFull(),
@@ -51,8 +49,7 @@ class DokumenPentingForm
                     ->image()
                     ->maxSize(2048),
                 Toggle::make('kirim_ke_tujuan')
-                    ->label('Kirim Ke Tujuan')
-                    ->required(),
+                    ->label('Kirim Ke Tujuan'),
             ]);
     }
 }

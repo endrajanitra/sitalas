@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('no_surat');
             $table->integer('jumlah_sk')->nullable();
             $table->unsignedBigInteger('direktorat_id')->index();
-            $table->string('pengirim')->nullablle();
+            $table->string('pengirim')->nullable();
             $table->string('perihal');
             $table->string('kontak_person')->nullable();
             $table->text('catatan');
