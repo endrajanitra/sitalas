@@ -21,7 +21,9 @@ class KodeSuratResource extends Resource
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
 
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-envelope';
+    protected static ?string $navigationLabel = "Kode Surat";
+
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-hashtag';
 
     protected static ?string $recordTitleAttribute = 'kode_surat';
 

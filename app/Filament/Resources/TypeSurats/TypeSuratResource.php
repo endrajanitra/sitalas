@@ -21,7 +21,9 @@ class TypeSuratResource extends Resource
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationLabel = 'Type Surat';
+
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-duplicate';
 
     protected static ?string $recordTitleAttribute = 'type_surat';
 

@@ -21,7 +21,9 @@ class DisposisiResource extends Resource
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
 
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-pencil';
+    protected static ?string $navigationLabel = 'Disposisi';
+
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-arrow-path';
 
     protected static ?string $recordTitleAttribute = 'jenis_disposisi';
 

@@ -21,7 +21,9 @@ class SifatSuratResource extends Resource
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
 
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-inbox';
+    protected static ?string $navigationLabel = 'Sifat Surat';
+
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-shield-exclamation';
 
     protected static ?string $recordTitleAttribute = 'sifat_surat';
 

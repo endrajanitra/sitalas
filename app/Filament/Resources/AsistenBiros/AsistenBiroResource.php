@@ -21,7 +21,9 @@ class AsistenBiroResource extends Resource
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationLabel = 'Asisten Biro';
+
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $recordTitleAttribute = 'asisten_biro';
 

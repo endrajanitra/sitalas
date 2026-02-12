@@ -21,7 +21,9 @@ class UnitPengolahResource extends Resource
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
 
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-home-modern';
+    protected static ?string $navigationLabel = 'Unit Pengolah';
+
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-building-office';
 
     protected static ?string $recordTitleAttribute = 'unit_pengolah';
 

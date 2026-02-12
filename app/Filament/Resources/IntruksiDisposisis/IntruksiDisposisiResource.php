@@ -21,7 +21,9 @@ class IntruksiDisposisiResource extends Resource
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationLabel = 'Intruksi Disposisi';
+
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-pencil-square';
 
     protected static ?string $recordTitleAttribute = 'intruksi_disposisi';
 
