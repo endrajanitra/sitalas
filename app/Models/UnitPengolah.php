@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\DokumenPenting;
 use App\Models\Proposal;
 use App\Models\IntruksiDisposisi;
+use App\Models\AsistenBiro;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -58,5 +59,15 @@ class UnitPengolah extends Model
     public function intruksi_disposisi()
     {
         return $this->hasMany(IntruksiDisposisi::class, 'direktorat_id');
+    }
+
+    public function asistenBiroSebagaiAsisten()
+    {
+        return $this->hasMany(AsistenBiro::class, 'asisten_unit_pengolah_id');
+    }
+
+    public function asistenBiroSebagaiBiro()
+    {
+        return $this->hasMany(AsistenBiro::class, 'biro_unit_pengolah_id');
     }
 }

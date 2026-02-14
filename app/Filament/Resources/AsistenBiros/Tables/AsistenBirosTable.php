@@ -14,9 +14,11 @@ class AsistenBirosTable
     {
         return $table
             ->columns([
-                TextColumn::make('asisten')
+                TextColumn::make('asistenUnit.direktorat')
+                    ->label('Asisten')
                     ->searchable(),
-                TextColumn::make('biro')
+                TextColumn::make('biroUnit.direktorat')
+                    ->label('Biro')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

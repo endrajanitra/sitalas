@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('asisten_biros', function (Blueprint $table) {
             $table->id();
-            $table->string('asisten');
-            $table->string('biro');
+            $table->foreignId('asisten_unit_pengolah_id')->constrained('unit_pengolahs')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('biro_unit_pengolah_id')->constrained('unit_pengolahs')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }
