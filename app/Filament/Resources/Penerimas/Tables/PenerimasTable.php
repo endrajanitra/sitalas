@@ -29,11 +29,11 @@ class PenerimasTable
                 TextColumn::make('banyak_surat')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('direktorat_id')
-                    ->numeric()
+                TextColumn::make('unitPengolah.direktorat')
+                    ->label('Unit Pengolah')
                     ->sortable(),
-                TextColumn::make('kode_id')
-                    ->numeric()
+                TextColumn::make('kodeSurat.kode')
+                    ->label('Kode Surat')
                     ->sortable(),
                 TextColumn::make('pengirim')
                     ->searchable(),
@@ -41,8 +41,8 @@ class PenerimasTable
                     ->searchable(),
                 TextColumn::make('kontak_person')
                     ->searchable(),
-                TextColumn::make('sifat_surat_id')
-                    ->numeric()
+                TextColumn::make('sifatSurat.sifat_surat')
+                    ->label('Sifat Surat')
                     ->sortable(),
                 TextColumn::make('file_upload')
                     ->searchable(),
