@@ -8,6 +8,7 @@ use App\Models\IntruksiDisposisi;
 use App\Models\AsistenBiro;
 use App\Models\BiroBagian;
 use App\Models\Penerima;
+use App\Models\TambahSuratKeluar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -85,5 +86,9 @@ class UnitPengolah extends Model
     public function Penerima()
     {
         return $this->hasMany(Penerima::class, 'direktorat_id');
+    }
+    public function suratKeluar()
+    {
+        return $this->hasMany(TambahSuratKeluar::class, 'direktorat_id');
     }
 }

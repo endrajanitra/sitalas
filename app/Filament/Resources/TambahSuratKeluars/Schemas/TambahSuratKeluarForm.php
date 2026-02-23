@@ -6,6 +6,8 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\Select;
+use FIlament\Forms\Components\FileUpload;
 
 class TambahSuratKeluarForm
 {
@@ -15,9 +17,10 @@ class TambahSuratKeluarForm
             ->components([
                 DatePicker::make('tanggal_surat')
                     ->required(),
-                TextInput::make('klasifikasi_id')
-                    ->required()
-                    ->numeric(),
+                Select::make('klasifikasi_id')
+                    ->label('Klasifikasi Surat')
+                    ->relationship('')
+                    ->required(),
                 TextInput::make('no_urut')
                     ->required()
                     ->numeric(),

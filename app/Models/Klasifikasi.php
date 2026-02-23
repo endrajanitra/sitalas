@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\TambahSuratKeluar;
 
 class Klasifikasi extends Model
 {
@@ -11,4 +12,9 @@ class Klasifikasi extends Model
     protected $fillable = [
         'klasifikasi',
     ];
+
+    public function suratKeluar()
+    {
+        return $this->hasMany(TambahSuratKeluar::class, 'klasifikasi_id');
+    }
 }

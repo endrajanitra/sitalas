@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Klasifikasi;
+use App\Models\KodeSurat;
+use App\Models\SifatSurat;
+use App\Models\UnitPengolah;
 class TambahSuratKeluar extends Model
 {
     use HasFactory;
@@ -23,4 +27,21 @@ class TambahSuratKeluar extends Model
         'upload_file',
         'lampiran',
     ];
+
+    public function Klasifikasi()
+    {
+        return $this->belongsTo(Klasifikasi::class, 'klasifikasi_id');
+    }
+    public function Kode()
+    {
+        return $this->belongsTo(KodeSurat::class, 'kode_id');
+    }
+    public function Sifat()
+    {
+        return $this->belongsTo(SifatSurat::class, 'sifat_surat_id');
+    }
+    public function UnitPengolah()
+    {
+        return $this->belongsTo(UnitPengolah::class, 'direktorat_id');
+    }
 }
