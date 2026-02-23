@@ -24,32 +24,35 @@ class PenerimasTable
                 TextColumn::make('no_urut')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('no_surat')
+                /*TextColumn::make('no_surat')
                     ->searchable(),
                 TextColumn::make('banyak_surat')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable(),*/
+                TextColumn::make('file_upload')
+                    ->searchable(),
+                TextColumn::make('pengirim')
+                    ->searchable(),
+                TextColumn::make('perihal')
+                    ->searchable(),
                 TextColumn::make('unitPengolah.direktorat')
                     ->label('Unit Pengolah')
                     ->sortable(),
                 TextColumn::make('kodeSurat.kode')
                     ->label('Kode Surat')
                     ->sortable(),
-                TextColumn::make('pengirim')
-                    ->searchable(),
-                TextColumn::make('perihal')
-                    ->searchable(),
-                TextColumn::make('kontak_person')
+                
+                
+                /*TextColumn::make('kontak_person')
                     ->searchable(),
                 TextColumn::make('sifatSurat.sifat_surat')
                     ->label('Sifat Surat')
                     ->sortable(),
-                TextColumn::make('file_upload')
-                    ->searchable(),
+               
                 TextColumn::make('no_box')
                     ->searchable(),
                 TextColumn::make('no_rak')
-                    ->searchable(),
+                    ->searchable(),*/
                 IconColumn::make('kirim_ke_pengarah_surat')
                     ->boolean(),
                 TextColumn::make('created_at')
