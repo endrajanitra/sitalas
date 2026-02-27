@@ -10,10 +10,10 @@ class ListPengarahs extends ListRecords
 {
     protected static string $resource = PengarahResource::class;
 
-    protected function getHeaderActions(): array
+    /*protected function getHeaderActions(): array
     {
         return [
             CreateAction::make(),
         ];
-    }
+    }*/
 }
