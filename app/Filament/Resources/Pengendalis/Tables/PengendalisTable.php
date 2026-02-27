@@ -15,40 +15,43 @@ class PengendalisTable
     {
         return $table
             ->columns([
-                TextColumn::make('penerima_id')
+                /*TextColumn::make('penerima_id')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable(),*/
                 TextColumn::make('tanggal_terima')
+                    ->label('Tanggal Masuk')
                     ->date()
                     ->sortable(),
                 TextColumn::make('tanggal_surat')
                     ->date()
                     ->sortable(),
-                TextColumn::make('no_urut')
+                /*TextColumn::make('no_urut')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable(),*/
                 TextColumn::make('no_surat')
                     ->searchable(),
-                TextColumn::make('banyak_surat')
+                /*TextColumn::make('banyak_surat')
                     ->numeric()
-                    ->sortable(),
-                TextColumn::make('direktorat_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('kode_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('pengirim')
-                    ->searchable(),
+                    ->sortable(),*/
                 TextColumn::make('perihal')
                     ->searchable(),
-                TextColumn::make('kontak_person')
-                    ->searchable(),
-                TextColumn::make('sifat_surat_id')
-                    ->numeric()
+                TextColumn::make('sifatSurat.sifat_surat')
+                    ->label('Sifat Surat')
                     ->sortable(),
                 TextColumn::make('file_upload')
                     ->searchable(),
+                TextColumn::make('unitPengolah.direktorat')
+                    ->label('Unit Pengolah')
+                    ->sortable(),
+                TextColumn::make('kodeSurat.kode')
+                    ->label('Kode Surat')
+                    ->sortable(),
+                /*TextColumn::make('pengirim')
+                    ->searchable(),
+                
+                TextColumn::make('kontak_person')
+                    ->searchable(),
+                
                 TextColumn::make('no_box')
                     ->searchable(),
                 TextColumn::make('no_rak')
@@ -60,7 +63,7 @@ class PengendalisTable
                     ->sortable(),
                 TextColumn::make('pengarah_id')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable(),*/
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

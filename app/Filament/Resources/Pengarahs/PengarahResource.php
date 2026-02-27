@@ -54,7 +54,7 @@ class PengarahResource extends Resource
     {
         return [
             'index' => ListPengarahs::route('/'),
-            'create' => CreatePengarah::route('/create'),
+            #'create' => CreatePengarah::route('/create'),
             'view' => ViewPengarah::route('/{record}'),
             'edit' => EditPengarah::route('/{record}/edit'),
         ];
