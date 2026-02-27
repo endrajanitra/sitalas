@@ -53,7 +53,7 @@ class PengendaliResource extends Resource
     {
         return [
             'index' => ListPengendalis::route('/'),
-            'create' => CreatePengendali::route('/create'),
+            #'create' => CreatePengendali::route('/create'),
             'view' => ViewPengendali::route('/{record}'),
             'edit' => EditPengendali::route('/{record}/edit'),
         ];

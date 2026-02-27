@@ -10,10 +10,10 @@ class ListPengendalis extends ListRecords
 {
     protected static string $resource = PengendaliResource::class;
 
-    protected function getHeaderActions(): array
+    /*protected function getHeaderActions(): array
     {
         return [
             CreateAction::make(),
         ];
-    }
+    }*/
 }
