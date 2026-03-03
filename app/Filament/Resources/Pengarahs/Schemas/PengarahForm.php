@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Filament\Resources\Pengarahs\Schemas;
-
+use App\Models\KodeSurat;
+use App\Models\Penerima;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Select;
 use Filament\Schemas\Schema;
 
 class PengarahForm
@@ -13,40 +15,63 @@ class PengarahForm
     {
         return $schema
             ->components([
-                TextInput::make('penerima_id')
-                    ->required()
-                    ->numeric(),
-                DatePicker::make('tanggal_terima')
+                /*DatePicker::make('tanggal_terima')
                     ->required(),
                 DatePicker::make('tanggal_surat')
                     ->required(),
                 TextInput::make('no_urut')
                     ->required()
                     ->numeric(),
-                TextInput::make('no_surat')
-                    ->required(),
+                
                 TextInput::make('banyak_surat')
                     ->required()
-                    ->numeric(),
-                TextInput::make('direktorat_id')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('kode_id')
-                    ->required()
-                    ->numeric(),
+                    ->numeric(),*/
+                Select::make('direktorat_id')
+                    ->label('Unit Pengolah')
+                    ->relationship('unitPengolah', 'direktorat')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
+                Select::make('kode_id')
+                    ->label('Kode Surat')
+                    ->relationship('kodeSurat', 'kode')
+                    ->getOptionLabelFromRecordUsing(fn (KodeSurat $record) =>
+                        $record->kode . ' - ' . $record->index
+                    )
+                    ->searchable()
+                    ->preload()
+                    ->required(),
+                TextInput::make('no_surat')
+                    ->required(),
                 TextInput::make('pengirim')
-                    ->required(),
+                    ->label('Pengirim')
+                    ->required()
+                    ->datalist(
+                        Penerima::query()
+                            ->select('pengirim')
+                            ->distinct()
+                            ->pluck('pengirim')
+                            ->toArray()
+                    ),
                 TextInput::make('perihal')
-                    ->required(),
-                TextInput::make('kontak_person')
+                    ->label('Perihal')
+                    ->required()
+                    ->datalist(
+                        Penerima::query()
+                            ->select('perihal')
+                            ->distinct()
+                            ->pluck('perihal')
+                            ->toArray()
+                    ),
+                /*TextInput::make('kontak_person')
                     ->required(),
                 TextInput::make('sifat_surat_id')
                     ->required()
-                    ->numeric(),
+                    ->numeric(),*/
                 Textarea::make('ringkasan_poko')
                     ->required()
                     ->columnSpanFull(),
-                Textarea::make('catatan')
+                /*Textarea::make('catatan')
                     ->required()
                     ->columnSpanFull(),
                 TextInput::make('file_upload')
@@ -54,7 +79,7 @@ class PengarahForm
                 TextInput::make('no_box')
                     ->required(),
                 TextInput::make('no_rak')
-                    ->required(),
+                    ->required(),*/
             ]);
     }
 }
