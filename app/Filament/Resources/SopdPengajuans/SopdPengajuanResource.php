@@ -11,6 +11,7 @@ use App\Filament\Resources\SopdPengajuans\Schemas\SopdPengajuanInfolist;
 use App\Filament\Resources\SopdPengajuans\Tables\SopdPengajuansTable;
 use App\Models\TambahSuratKeluar;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -20,7 +21,14 @@ class SopdPengajuanResource extends Resource
 {
     protected static ?string $model = TambahSuratKeluar::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string | UnitEnum | null $navigationGroup= 'Surat Keluar';
+
+    protected static ?string $navigationLabel = 'Sopd Pengajuan';
+
+    protected static ?string $modelLabel = 'Sopd Pengajuan';
+    protected static ?string $pluralModelLabel = 'Sopd Pengajuan';
+
+    #protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'sopd_pengajuan';
 
