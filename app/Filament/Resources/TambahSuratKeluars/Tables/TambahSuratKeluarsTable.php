@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Actions\Action;
 
 class TambahSuratKeluarsTable
 {
@@ -58,6 +59,13 @@ class TambahSuratKeluarsTable
             ])
             ->recordActions([
                 EditAction::make(),
+            ])
+            ->actions([
+                Action::make('print')
+                    ->label('Print')
+                    ->icon('heroicon-o-printer')
+                    ->url(fn ($record) => route('suratkeluar.print', $record->id))
+                    ->openUrlInNewTab(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
