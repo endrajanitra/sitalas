@@ -15,35 +15,29 @@ class SopdApprovesTable
     {
         return $table
             ->columns([
-                TextColumn::make('tambah_surat_keluar_id')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('tanggal_surat')
                     ->date()
                     ->sortable(),
-                TextColumn::make('klasifikasi_id')
-                    ->numeric()
+                TextColumn::make('unitPengolah.direktorat')
+                    ->label('Unit Pegolah')
                     ->sortable(),
-                TextColumn::make('no_urut')
-                    ->numeric()
+                TextColumn::make('Kode.kode')
+                    ->label('Kode Surat')
                     ->sortable(),
-                TextColumn::make('kode_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('no_surat')
-                    ->searchable(),
-                TextColumn::make('sifat_surat_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('direktorat_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('kontak_person')
+                TextColumn::make('perihal')
+                    ->label('Perihal')
                     ->searchable(),
                 TextColumn::make('kepada')
+                    ->label('Nama')
+                    ->searchable(),
+                TextColumn::make('kontak_person')
+                    ->label('No Hp')
                     ->searchable(),
                 TextColumn::make('upload_file')
                     ->searchable(),
+                TextColumn::make('Klasifikasi.klasifikasi')
+                    ->label('Klasifikasi')
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
