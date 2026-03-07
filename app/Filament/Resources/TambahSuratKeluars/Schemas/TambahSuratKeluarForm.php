@@ -8,6 +8,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
+use App\Models\KodeSurat;
 
 class TambahSuratKeluarForm
 {
@@ -29,9 +30,9 @@ class TambahSuratKeluarForm
                 Select::make('kode_id')
                     ->label('Kode Surat')
                     ->relationship('Kode', 'kode')
-                    ->searchable()
-                    ->preload()
-                    ->required(),
+                    ->getOptionLabelFromRecordUsing(fn (KodeSurat $record) =>
+                        $record->kode . ' - ' . $record->index
+                    ),
                 TextInput::make('no_surat')
                     ->required(),
                 Select::make('sifat_surat_id')
