@@ -52,8 +52,13 @@ class SopdApprovesTable
 
                 TextColumn::make('tambahSuratKeluar.status')
                     ->label('Status')
-                    ->badge(),
-
+                    ->badge()
+                    ->colors([
+                        'warning' => 'pending',
+                        'success' => 'diterima',
+                        'danger' => 'ditolak',
+                        'secondary' => 'belum request',
+                    ]),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
