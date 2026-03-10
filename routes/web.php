@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProposalPrintController;
 use App\Http\Controllers\PengendaliPrintController;
 use App\Http\Controllers\SuratKeluarPrintController;
+use App\Http\Controllers\ReportSuratKeluarController;
 use App\Http\Controllers\FileController;
 
 Route::get('/penerimas/{penerima}/file', [FileController::class, 'penerima'])
@@ -27,4 +28,6 @@ Route::get('/pengendali/{id}/print', [PengendaliPrintController::class, 'print']
     ->name('pengendali.print');
 Route::get('/suratkeluar/{id}/print', [SuratKeluarPrintController::class, 'print'])
     ->name('suratkeluar.print');
+Route::get('/report-surat-keluar/print', [ReportSuratKeluarController::class, 'print'])
+    ->name('report.surat-keluar.print');
 });
