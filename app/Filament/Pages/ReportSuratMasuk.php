@@ -13,6 +13,9 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
+use App\Filament\Exports\ReportSuratMasukExport;
+use Filament\Actions\Action;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReportSuratMasuk extends Page implements Tables\Contracts\HasTable
 {
@@ -154,4 +157,21 @@ class ReportSuratMasuk extends Page implements Tables\Contracts\HasTable
             ])
             ->filtersFormColumns(2);
     }
+    protected function getHeaderActions(): array
+        {
+            return [
+                Action::make('exportExcel')
+                    ->label('Export Excel')
+                    ->icon('heroicon-o-arrow-down-tray')
+                    ->color('success')
+                    ->action(function () {
+                        $filters = $this->table->getFiltersForm()->getState();
+
+                        return Excel::download(
+                            new ReportSuratMasukExport($filters),
+                            'report-surat-masuk.xlsx'
+                        );
+                    }),
+            ];
+        }
 }
