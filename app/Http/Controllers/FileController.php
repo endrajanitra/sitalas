@@ -31,7 +31,7 @@ class FileController extends Controller
     }
     public function sopdApprove(SopdApprove $sopdApprove)
     {
-        return $this->serveLocalFile($sopdApprove->file_upload);
+        return $this->serveLocalFile($sopdApprove->upload_file);
     }
 
     private function serveLocalFile(string $path)
