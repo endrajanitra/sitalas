@@ -25,19 +25,12 @@ class ReportSuratMasuk extends Page implements Tables\Contracts\HasTable
     protected static ?string $navigationLabel = 'Report Surat Masuk';
     protected static ?string $title = 'Report Surat Masuk';
     protected string $view = 'filament.pages.report-surat-masuk';
-    protected static string|UnitEnum|null $navigationGroup = 'Report';
+    protected static string | UnitEnum | null $navigationGroup = 'Report';
 
     public function table(Table $table): Table
     {
         return $table
-            ->query(
-                Penerima::query()->with([
-                    'unitPengolah',
-                    'kodeSurat',
-                    'sifatSurat',
-                    'pengarah',
-                ])
-            )
+            ->query(fn (): Builder => $this->getTableQuery())
             ->columns([
                 TextColumn::make('tanggal_terima')
                     ->label('Tgl Masuk')
@@ -89,37 +82,22 @@ class ReportSuratMasuk extends Page implements Tables\Contracts\HasTable
             ->defaultSort('tanggal_terima', 'desc')
             ->striped()
             ->filters([
-                Filter::make('tanggal_dari')
-                    ->label('Dari Tanggal')
+                Filter::make('tanggal')
+                    ->label('Filter Tanggal')
                     ->schema([
                         DatePicker::make('tanggal_dari')
                             ->label('Dari Tanggal')
                             ->native(false)
                             ->displayFormat('d/m/Y')
                             ->placeholder('Pilih tanggal'),
-                    ])
-                    ->query(function (Builder $query, array $data): Builder {
-                        return $query->when(
-                            $data['tanggal_dari'] ?? null,
-                            fn (Builder $query, $date): Builder => $query->whereDate('tanggal_terima', '>=', $date)
-                        );
-                    }),
 
-                Filter::make('tanggal_sampai')
-                    ->label('Sampai Tanggal')
-                    ->schema([
                         DatePicker::make('tanggal_sampai')
                             ->label('Sampai Tanggal')
                             ->native(false)
                             ->displayFormat('d/m/Y')
                             ->placeholder('Pilih tanggal'),
                     ])
-                    ->query(function (Builder $query, array $data): Builder {
-                        return $query->when(
-                            $data['tanggal_sampai'] ?? null,
-                            fn (Builder $query, $date): Builder => $query->whereDate('tanggal_terima', '<=', $date)
-                        );
-                    }),
+                    ->columns(2),
 
                 Filter::make('unit_pengolah')
                     ->label('Unit Pengolah')
@@ -130,13 +108,7 @@ class ReportSuratMasuk extends Page implements Tables\Contracts\HasTable
                             ->searchable()
                             ->preload()
                             ->placeholder('Semua Unit'),
-                    ])
-                    ->query(function (Builder $query, array $data): Builder {
-                        return $query->when(
-                            $data['direktorat_id'] ?? null,
-                            fn (Builder $query, $state): Builder => $query->where('direktorat_id', $state)
-                        );
-                    }),
+                    ]),
 
                 Filter::make('sifat_surat')
                     ->label('Sifat Surat')
@@ -147,31 +119,70 @@ class ReportSuratMasuk extends Page implements Tables\Contracts\HasTable
                             ->searchable()
                             ->preload()
                             ->placeholder('Semua Sifat'),
-                    ])
-                    ->query(function (Builder $query, array $data): Builder {
-                        return $query->when(
-                            $data['sifat_surat_id'] ?? null,
-                            fn (Builder $query, $state): Builder => $query->where('sifat_surat_id', $state)
-                        );
-                    }),
+                    ]),
             ])
-            ->filtersFormColumns(2);
+            ->filtersFormColumns(2)
+            ->emptyStateHeading('Belum ada data')
+            ->emptyStateDescription('Pilih minimal satu filter dari tanggal, unit pengolah, atau sifat surat lalu klik Apply filters.');
+    }
+
+    protected function getTableQuery(): Builder
+    {
+        $tanggalDari = data_get($this->tableFilters, 'tanggal.tanggal_dari');
+        $tanggalSampai = data_get($this->tableFilters, 'tanggal.tanggal_sampai');
+        $direktoratId = data_get($this->tableFilters, 'unit_pengolah.direktorat_id');
+        $sifatSuratId = data_get($this->tableFilters, 'sifat_surat.sifat_surat_id');
+
+        $query = Penerima::query()->with([
+            'unitPengolah',
+            'kodeSurat',
+            'sifatSurat',
+            'pengarah',
+        ]);
+
+        $hasFilter =
+            filled($tanggalDari) ||
+            filled($tanggalSampai) ||
+            filled($direktoratId) ||
+            filled($sifatSuratId);
+
+        if (! $hasFilter) {
+            return $query->whereRaw('1 = 0');
+        }
+
+        return $query
+            ->when(
+                filled($tanggalDari),
+                fn (Builder $query) => $query->whereDate('tanggal_terima', '>=', $tanggalDari)
+            )
+            ->when(
+                filled($tanggalSampai),
+                fn (Builder $query) => $query->whereDate('tanggal_terima', '<=', $tanggalSampai)
+            )
+            ->when(
+                filled($direktoratId),
+                fn (Builder $query) => $query->where('direktorat_id', $direktoratId)
+            )
+            ->when(
+                filled($sifatSuratId),
+                fn (Builder $query) => $query->where('sifat_surat_id', $sifatSuratId)
+            );
     }
     protected function getHeaderActions(): array
-        {
-            return [
-                Action::make('exportExcel')
-                    ->label('Export Excel')
-                    ->icon('heroicon-o-arrow-down-tray')
-                    ->color('success')
-                    ->action(function () {
-                        $filters = $this->table->getFiltersForm()->getState();
+    {
+        return [
+            Action::make('exportExcel')
+                ->label('Export Excel')
+                ->icon('heroicon-o-arrow-down-tray')
+                ->color('success')
+                ->action(function () {
+                    $filters = $this->tableFilters ?? [];
 
-                        return Excel::download(
-                            new ReportSuratMasukExport($filters),
-                            'report-surat-masuk.xlsx'
-                        );
-                    }),
-            ];
-        }
+                    return Excel::download(
+                        new ReportSuratMasukExport($filters),
+                        'report-surat-masuk.xlsx'
+                    );
+                }),
+        ];
+    }
 }
