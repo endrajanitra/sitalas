@@ -5,14 +5,22 @@
     <title>Lembar Surat Keluar</title>
 
     <style>
+        @page {
+            margin: 18px 22px;
+        }
+
         body {
-            font-family: "Times New Roman", serif;
-            font-size: 12px;
-            margin: 40px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            color: #000;
         }
 
         .kop {
             text-align: center;
+            font-family: "Times New Roman", serif;
+            margin-bottom: 8px;
         }
 
         .kop h2 {
@@ -22,65 +30,85 @@
         }
 
         .kop p {
-            margin: 2px 0;
+            margin: 1px 0;
             font-size: 12px;
         }
 
         .line {
-            border-top: 3px solid black;
-            border-bottom: 1px solid black;
-            margin-top: 10px;
-            margin-bottom: 20px;
+            border-top: 3px solid #000;
+            border-bottom: 1px solid #000;
+            margin-top: 8px;
+            margin-bottom: 10px;
         }
 
-        .judul {
+        .judul-surat {
             text-align: center;
-            font-size: 14px;
             font-weight: bold;
-            margin-bottom: 20px;
-            text-decoration: underline;
+            font-size: 13px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
         }
 
-        table {
+        table.form {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed;
         }
 
-        td {
-            padding: 6px;
+        table.form td {
+            padding: 4px 6px;
+            vertical-align: top;
+            word-break: break-word;
+        }
+
+        .btop { border-top: 1px solid #000; }
+        .bbot { border-bottom: 1px solid #000; }
+        .bleft { border-left: 1px solid #000; }
+        .bright { border-right: 1px solid #000; }
+
+        .bold { font-weight: bold; }
+
+        .label {
+            width: 90px;
+            white-space: nowrap;
+        }
+
+        .colon {
+            width: 10px;
+            text-align: center;
+        }
+
+        .value {
+            width: auto;
+        }
+
+        .height-ringkas {
+            min-height: 72px;
+            line-height: 1.35;
+        }
+
+        .height-catatan {
+            min-height: 42px;
+            line-height: 1.35;
+        }
+
+        .no-padding {
+            padding: 0 !important;
+        }
+
+        .inner-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .inner-table td {
+            padding: 4px 6px;
             vertical-align: top;
         }
 
-        .label {
-            width: 25%;
-            font-weight: bold;
-        }
-
-        .titik {
-            width: 5%;
-        }
-
-        .isi {
-            width: 70%;
-        }
-
-        .box {
-            border: 1px solid black;
-            padding: 10px;
-            margin-top: 10px;
-        }
-
-        .ttd {
-            margin-top: 60px;
-            width: 100%;
-        }
-
-        .ttd td {
-            text-align: center;
-        }
-
-        .small {
-            font-size: 11px;
+        .ttd-box {
+            min-height: 28px;
         }
     </style>
 </head>
@@ -95,89 +123,102 @@
 
     <div class="line"></div>
 
-    {{-- ================= JUDUL ================= --}}
-    <div class="judul">
+    {{-- ================= JUDUL DI BAWAH KOP ================= --}}
+    <div class="judul-surat">
         KARTU KENDALI SURAT KELUAR
     </div>
 
-    {{-- ================= DATA UTAMA ================= --}}
-    <table>
+    {{-- ================= ISI FORM ================= --}}
+    <table class="form">
         <tr>
-            <td class="label">Indeks</td>
-            <td class="titik">:</td>
-            <td class="isi">{{ $data->Kode->index ?? '-' }}</td>
-        </tr>
+            <td class="label">Index</td>
+            <td class="colon">:</td>
+            <td class="value bright">{{ $data->Kode->index ?? '-' }}</td>
 
-        <tr>
             <td class="label">Kode</td>
-            <td>:</td>
-            <td>{{ $data->Kode->kode ?? '-' }}</td>
-        </tr>
+            <td class="colon">:</td>
+            <td class="value bright">{{ $data->Kode->kode ?? '-' }}</td>
 
-        <tr>
             <td class="label">No. Urut</td>
-            <td>:</td>
-            <td>{{ $data->no_urut }}</td>
+            <td class="colon">:</td>
+            <td class="value">{{ $data->no_urut ?? '-' }}</td>
         </tr>
 
-        <tr>
-            <td class="label">Nomor Surat</td>
-            <td>:</td>
-            <td>{{ $data->no_surat }}</td>
-        </tr>
-
-        <tr>
-            <td class="label">Tanggal Surat</td>
-            <td>:</td>
-            <td>{{ \Carbon\Carbon::parse($data->tanggal_surat)->format('d F Y') }}</td>
-        </tr>
-
-        
-
-        <tr>
-            <td class="label">Kepada</td>
-            <td>:</td>
-            <td>{{ $data->kepada }}</td>
-        </tr>
-
-        <tr>
-            <td class="label">Pengolah</td>
-            <td>:</td>
-            <td>{{ $data->unitPengolah->direktorat ?? '-' }}</td>
-        </tr>
-
-    </table>
-
-    {{-- ================= PERIHAL ================= --}}
-    <div class="box">
-        <strong>Perihal:</strong><br>
-        {{ $data->perihal }}
-    </div>
-
-    {{-- ================= RINGKASAN ================= --}}
-    <div class="box">
-        <strong>Isi Ringkasan:</strong><br>
-        {{ $data->perihal }}
-    </div>
-
-    {{-- ================= CATATAN ================= --}}
-    <div class="box">
-        <strong>Lampiran:</strong><br>
-        {{ $data->lampiran ?? '-' }}
-    </div>
-
-    {{-- ================= TANDA TANGAN ================= --}}
-    <table class="ttd">
-        <tr>
-            <td>
-                Mengetahui,<br>
-                <br><br><br>
-                ___________________________
+        <tr class="btop bbot">
+            <td class="label">Hal</td>
+            <td class="colon">:</td>
+            <td colspan="7">
+                {{ $data->perihal ?? '-' }}
             </td>
-            <td>
-                Tanda Terima,<br>
-                <br><br><br>
-                ___________________________
+        </tr>
+
+        <tr class="bbot">
+            <td class="label">Isi Ringkasan</td>
+            <td class="colon">:</td>
+            <td colspan="7">
+                <div class="height-ringkas">
+                    {{ $data->ringkasan_poko ?? '-' }}
+                </div>
+            </td>
+        </tr>
+
+        <tr class="bbot">
+            <td class="label">Dari</td>
+            <td class="colon">:</td>
+            <td colspan="7">
+                {{ $data->kepada ?? '-' }}
+            </td>
+        </tr>
+
+        <tr class="bbot">
+            <td colspan="9" class="no-padding">
+                <table class="inner-table">
+                    <tr>
+                        <td style="width:16%;" class="bright">
+                            <span class="bold">Tanggal Surat :</span><br>
+                            {{ !empty($data->tanggal_surat) ? \Carbon\Carbon::parse($data->tanggal_surat)->format('d-F-Y') : '-' }}
+                        </td>
+                        <td style="width:26%;" class="bright">
+                            <span class="bold">Nomor Surat :</span><br>
+                            {{ $data->no_surat ?? '-' }}
+                        </td>
+                        <td style="width:8%;">
+                            <span class="bold">Lampiran :</span><br>
+                            {{ $data->banyak_surat ?? '1' }}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="bbot">
+            <td colspan="9" class="no-padding">
+                <table class="inner-table">
+                    <tr>
+                        <td style="width:34%;" class="bright">
+                            <span class="bold">Pengolah :</span><br>
+                            {{ $data->unitPengolah->direktorat ?? '-' }}
+                        </td>
+                        <td style="width:26%;" class="bright">
+                            <span class="bold">Tanggal Diteruskan :</span><br>
+                            {{ !empty($data->tanggal_surat) ? \Carbon\Carbon::parse($data->tanggal_surat)->format('d-F-Y') : '-' }}
+                        </td>
+                        <td style="width:20%;">
+                            <span class="bold">Tanda Terima :</span><br>
+                            <div class="ttd-box">&nbsp;</div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="bbot">
+            <td class="label">keterangan</td>
+            <td class="colon">:</td>
+            <td colspan="7">
+                <div class="height-catatan">
+                    {{ $data->keterangan ?? '-' }}
+                </div>
             </td>
         </tr>
     </table>
