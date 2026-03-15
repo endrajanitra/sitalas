@@ -24,6 +24,9 @@ Route::get('/sopdapproves/{sopdApprove}/file', [FileController::class, 'sopdAppr
 
 Route::get('/reporttrackings/{reportTracking}/file', [FileController::class, 'reportTracking'])
     ->name('reporttrackings.file.show');
+
+Route::get('/suratmasuks/{suratMasuk}/file', [FileController::class, 'suratMasuk'])
+    ->name('suratmasuks.file.show');
     
 Route::get('/', function () {
     return view('welcome');

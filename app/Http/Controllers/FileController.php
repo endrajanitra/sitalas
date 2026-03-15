@@ -38,6 +38,10 @@ class FileController extends Controller
     {
         return $this->serveLocalFile($reportTracking->upload_file);
     }
+    public function suratMasuk(SuratMasuk $suratMasuk)
+    {
+        return $this->serveLocalFile($suratMasuk->upload_file);
+    }
 
     private function serveLocalFile(string $path)
     {

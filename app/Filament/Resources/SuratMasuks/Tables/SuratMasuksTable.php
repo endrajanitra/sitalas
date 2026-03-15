@@ -27,7 +27,12 @@ class SuratMasuksTable
                 TextColumn::make('no_surat')
                     ->numeric(),
                 TextColumn::make('upload_file')
-                    ->searchable(),
+                    ->label('File Upload')
+                    ->formatStateUsing(fn ($state) => basename($state))
+                    ->url(fn ($record) => route('suratmasuks.file.show', [
+                        'suratMasuk' => $record->getKey()
+                    ]))
+                    ->openUrlInNewTab(),
                 TextColumn::make('pengirim')
                     ->searchable(),
                 TextColumn::make('perihal')
