@@ -44,7 +44,15 @@ class ListBirosTable
                     ->sortable(),
 
                 TextColumn::make('upload_file')
-                    ->searchable(),
+                    ->label('File upload')
+                    ->formatStateUsing(fn ($state) => filled($state) ? basename($state) : '-')
+                    ->url(fn ($record) => filled($record->upload_file)
+                        ? route('listbiros.file.show', [
+                            'listBiro' => $record->getKey(),
+                        ])
+                        : null
+                    )
+                    ->openUrlInNewTab(),
 
                 TextColumn::make('created_at')
                     ->dateTime()

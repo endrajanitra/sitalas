@@ -6,6 +6,7 @@ use App\Models\Penerima;
 use App\Models\Pengarah;
 use App\Models\Pengendali;
 use App\Models\TambahSuratKeluar;
+use App\Models\ListBiro;
 use App\Models\SopdApprove;
 use App\Models\SuratMasuk;
 use Illuminate\Support\Facades\Storage;
@@ -34,6 +35,11 @@ class FileController extends Controller
     {
         return $this->serveLocalFile($sopdApprove->upload_file);
     }
+    public function listBiro(ListBiro $listBiro)
+    {
+        return $this->serveLocalFile($listBiro->upload_file);
+    }
+
     public function reportTracking(SuratMasuk $reportTracking)
     {
         return $this->serveLocalFile($reportTracking->upload_file);
