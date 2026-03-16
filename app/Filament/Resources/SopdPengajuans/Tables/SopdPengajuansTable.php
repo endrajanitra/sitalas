@@ -8,6 +8,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Actions\Action;
 use App\Models\SopdApprove;
 use Filament\Actions\CreateAction;
@@ -55,6 +56,10 @@ class SopdPengajuansTable
                     ->label('Diinput Oleh')
                     ->badge()
                     ->color('info'),
+
+                IconColumn::make('is_sopd_req')
+                    ->label('Sopd Req')
+                    ->boolean(),
 
                 TextColumn::make('status')
                     ->badge()
