@@ -25,6 +25,9 @@ Route::get('/sopdapproves/{sopdApprove}/file', [FileController::class, 'sopdAppr
 Route::get('/listbiros/{listBiro}/file', [FileController::class, 'listBiro'])
     ->name('listbiros.file.show');
 
+Route::get('/buktiterimas/{buktiTerima}/file', [FileController::class, 'buktiTerima'])
+    ->name('buktiterimas.file.show');
+
 Route::get('/reporttrackings/{reportTracking}/file', [FileController::class, 'reportTracking'])
     ->name('reporttrackings.file.show');
 

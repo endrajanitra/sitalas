@@ -60,7 +60,15 @@ class ListBirosTable
                     ->sortable(),
 
                 TextColumn::make('file_bukti_terima')
-                    ->label('File Bukti Terima'),
+                    ->label('File Bukti Diterima')
+                    ->formatStateUsing(fn ($state) => filled($state) ? basename($state) : '-')
+                    ->url(fn ($record) => filled($record->buktiTerima)
+                        ? route('buktiterimas.file.show', [
+                            'buktiTerima' => $record->getKey(),
+                        ])
+                        : null
+                    )
+                    ->openUrlInNewTab(),
                     
                 TextColumn::make('created_at')
                     ->dateTime()

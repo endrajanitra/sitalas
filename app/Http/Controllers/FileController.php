@@ -39,6 +39,10 @@ class FileController extends Controller
     {
         return $this->serveLocalFile($listBiro->upload_file);
     }
+    public function buktiTerima(ListBiro $buktiTerima)
+    {
+        return $this->serveLocalFile($buktiTerima->file_bukti_terima);
+    }
 
     public function reportTracking(SuratMasuk $reportTracking)
     {
