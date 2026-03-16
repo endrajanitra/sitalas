@@ -2,12 +2,12 @@
 
 namespace App\Filament\Resources\SopdPengajuans\Schemas;
 
-use Filament\Schemas\Schema;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Schemas\Schema;
 
 class SopdPengajuanForm
 {
@@ -15,26 +15,33 @@ class SopdPengajuanForm
     {
         return $schema
             ->components([
+
                 DatePicker::make('tanggal_surat')
                     ->required(),
+
                 Textarea::make('perihal')
-                    ->required()
-                    ->columnSpanFull(),
+                    ->required(),
+
                 Select::make('sifat_surat_id')
                     ->label('Sifat Surat')
                     ->relationship('Sifat', 'sifat_surat')
                     ->searchable()
-                    ->preload()
-                    ->required(),
+                    ->preload(),
+
                 TextInput::make('kepada')
+                    ->label('Kepada')
                     ->required(),
+
                 TextInput::make('kontak_person')
+                    ->label('No HP')
                     ->required(),
+
                 Textarea::make('keterangan')
-                    ->required()
-                    ->columnSpanFull(),
+                    ->label('Note'),
+
                 FileUpload::make('upload_file')
-                    ->required(),
+                    ->label('Upload File'),
+
             ]);
     }
 }

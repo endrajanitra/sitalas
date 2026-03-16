@@ -10,6 +10,7 @@ use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Actions\Action;
 use App\Models\SopdApprove;
+use Filament\Actions\CreateAction;
 
 class SopdPengajuansTable
 {
@@ -79,6 +80,10 @@ class SopdPengajuansTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+            ])
+            ->headerActions([
+                CreateAction::make()
+                    ->label('Tambah Data'),
             ])
             ->filters([
                 //
