@@ -27,6 +27,14 @@ class JumlahSuratMasuk extends Page implements Tables\Contracts\HasTable
     protected static string | UnitEnum | null $navigationGroup = 'Report';
 
     protected string $view = 'filament.pages.jumlah-surat-masuk';
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin();
+    }
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()?->isAdmin();
+    }
 
     public function exportExcel()
     {
