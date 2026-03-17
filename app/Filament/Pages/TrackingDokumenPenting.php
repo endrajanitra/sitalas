@@ -27,6 +27,15 @@ class TrackingDokumenPenting extends Page implements HasTable
     protected static ?string $title = 'Laporan Dokumen Penting';
     protected static string|UnitEnum|null $navigationGroup = 'Report';
 
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isAdmin();
+    }
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()?->isAdmin();
+    }
+
     public function table(Table $table): Table
     {
         return $table
