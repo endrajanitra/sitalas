@@ -28,6 +28,20 @@ class SopdReport extends Page implements HasTable
     protected static string | UnitEnum | null $navigationGroup = 'Surat Keluar';
     protected string $view = 'filament.pages.sopd-report';
 
+    public static function canAccess(): bool
+    {
+        $user = auth()->user();
+
+        return $user?->isAdmin() || $user?->isUser();
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        $user = auth()->user();
+
+        return $user?->isAdmin() || $user?->isUser();
+    }
+
     public function table(Table $table): Table
     {
         return $table
