@@ -33,11 +33,30 @@ class SopdPengajuanResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'sopd_pengajuan';
 
+    public static function canAccess(): bool
+    {
+        $user = auth()->user();
+
+        return $user?->isAdmin() || $user?->isUser();
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        $user = auth()->user();
+
+        return $user?->isAdmin() || $user?->isUser();
+    }
+
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()
-            ->where('is_sopd_req', true)
-            ->where('user_id', auth()->id());
+        $query = parent::getEloquentQuery()
+            ->where('is_sopd_req', true);
+
+        if (! auth()->user()->isAdmin()) {
+            $query->where('user_id', auth()->id());
+        }
+
+        return $query;
     }
 
     public static function form(Schema $schema): Schema

@@ -21,7 +21,7 @@ class TambahSuratKeluarPolicy
      */
     public function view(User $user, TambahSuratKeluar $tambahSuratKeluar): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isUser();
     }
 
     /**
@@ -29,7 +29,7 @@ class TambahSuratKeluarPolicy
      */
     public function create(User $user): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isUser();
     }
 
     /**
@@ -37,7 +37,7 @@ class TambahSuratKeluarPolicy
      */
     public function update(User $user, TambahSuratKeluar $tambahSuratKeluar): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isUser();
     }
 
     /**

@@ -105,9 +105,9 @@ class SopdPengajuansTable
                     ->icon('heroicon-o-paper-airplane')
                     ->color('success')
                     ->requiresConfirmation()
-                    ->visible(fn ($record) => ! $record->is_requested)
+                    ->visible(fn ($record) => ! $record->is_requested && $record->user_id === auth()->id())
                     ->action(function ($record) {
-                        if ($record->is_requested) {
+                        if ($record->is_requested || $record->user_id !== auth()->id()) {
                             return;
                         }
 
