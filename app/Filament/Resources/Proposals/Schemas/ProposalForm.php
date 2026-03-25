@@ -24,7 +24,6 @@ class ProposalForm
                 ->columnSpanFull()
                 ->schema([
 
-                    // 🔵 KOLOM KIRI
                     Grid::make(1)->schema([
 
                         Section::make('Informasi Proposal')
