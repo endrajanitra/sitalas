@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\TypeSurats\Schemas;
 
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
 
 class TypeSuratForm
@@ -11,12 +13,31 @@ class TypeSuratForm
     {
         return $schema
             ->components([
-                TextInput::make('type_surat')
-                    ->label('Type Surat')
-                    ->required(),
-                TextInput::make('kode_no_agenda')
-                    ->label('Kode No Agenda')
-                    ->required(),
+
+                Section::make('Informasi Type Surat')
+                    ->description('Pengaturan jenis dan kode agenda surat')
+                    ->schema([
+
+                        Grid::make([
+                            'default' => 1,
+                            'md' => 2,
+                        ])->schema([
+
+                            TextInput::make('type_surat')
+                                ->label('Type Surat')
+                                ->placeholder('Contoh: Surat Masuk / Surat Keluar')
+                                ->required()
+                                ->maxLength(100),
+
+                            TextInput::make('kode_no_agenda')
+                                ->label('Kode No Agenda')
+                                ->placeholder('Contoh: SM / SK')
+                                ->required()
+                                ->maxLength(50),
+
+                        ]),
+                    ])
+                    ->columnSpanFull(),
             ]);
     }
 }
