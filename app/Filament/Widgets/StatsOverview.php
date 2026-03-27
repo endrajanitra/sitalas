@@ -27,6 +27,16 @@ class StatsOverview extends BaseWidget
 
             Stat::make('Proposal', Proposal::count())
                 ->description('Total proposal')
+                ->descriptionIcon(Heroicon::ArrowDownLeft, IconPosition::Before)
+                ->chart(
+                    Proposal::selectRaw("MONTH(created_at) as month, COUNT(*) as count")
+                    ->whereYear("created_at", now()->year)
+                    ->groupBy("month")
+                    ->orderBy("month")
+                    ->pluck("count")
+                    ->toArray()
+                )
+                ->descriptionColor('warning')
                 ->color('warning'),
 
             Stat::make('User', User::count())
