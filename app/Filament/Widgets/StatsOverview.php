@@ -2,10 +2,10 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\Penerima;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
-use App\Models\SuratMasuk;
 use App\Models\TambahSuratKeluar;
 use App\Models\Proposal;
 use App\Models\User;
@@ -17,8 +17,18 @@ class StatsOverview extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Surat Masuk', SuratMasuk::count())
+            Stat::make('Surat Masuk', Penerima::count())
                 ->description('Total surat masuk')
+                ->descriptionIcon(Heroicon::ArrowDownLeft, IconPosition::Before)
+                ->chart(
+                    Penerima::selectRaw("MONTH(created_at) as month, COUNT(*) as count")
+                    ->whereYear("created_at", now()->year)
+                    ->groupBy("month")
+                    ->orderBy("month")
+                    ->pluck("count")
+                    ->toArray()
+                )
+                ->descriptionColor('primary')
                 ->color('primary'),
 
             Stat::make('Surat Keluar', TambahSuratKeluar::count())
