@@ -46,6 +46,7 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Widgets\StatsOverview::class,
                 \App\Filament\Widgets\ChartSuratMasuk::class,
                 \App\Filament\Widgets\ChartSuratKeluar::class,
+                \App\Filament\Widgets\SuratMasukTable::class,
             ])
             ->middleware([
                 EncryptCookies::class,
