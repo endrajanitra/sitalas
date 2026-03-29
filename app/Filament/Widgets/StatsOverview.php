@@ -14,6 +14,7 @@ use Filament\Support\Icons\Heroicon;
 
 class StatsOverview extends BaseWidget
 {
+    protected int|string|array $columnSpan = 'full';
     protected function getStats(): array
     {
         return [

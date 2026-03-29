@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class ChartSuratMasuk extends ChartWidget
 {
+    protected int|string|array $columnSpan = 1;
     protected ?string $heading = 'Surat Masuk per Bulan';
 
     protected function getData(): array

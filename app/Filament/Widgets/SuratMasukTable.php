@@ -9,6 +9,7 @@ use App\Models\Penerima;
 
 class SuratMasukTable extends TableWidget
 {
+    protected int|string|array $columnSpan = 'full';
     protected static ?string $heading = 'Surat Masuk Terbaru';
 
     protected function getTableQuery(): Builder

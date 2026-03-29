@@ -9,6 +9,7 @@ use App\Models\TambahSuratKeluar;
 
 class SuratKeluarTable extends TableWidget
 {
+    protected int|string|array $columnSpan = 'full';
     protected static ?string $heading = 'Surat Keluar Terbaru';
 
     protected function getTableQuery(): Builder

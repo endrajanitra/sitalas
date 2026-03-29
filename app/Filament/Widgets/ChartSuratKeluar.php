@@ -7,6 +7,7 @@ use App\Models\TambahSuratKeluar;
 
 class ChartSuratKeluar extends ChartWidget
 {
+    protected int|string|array $columnSpan = 1;
     protected ?string $heading = 'Surat Keluar per Bulan';
 
     protected function getData(): array
