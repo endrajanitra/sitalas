@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Filament\Pages;
+use Illuminate\Support\Facades\Auth;
 
 use Filament\Pages\Dashboard as BaseDashboard;
 
@@ -8,6 +9,10 @@ class Dashboard extends BaseDashboard
 {
     public function getWidgets(): array
     {
+        if (! Auth::user()?->isAdmin()) {
+            return []; // ⛔ selain admin → kosong
+        }
+
         return [
             \App\Filament\Widgets\StatsOverview::class,
 
