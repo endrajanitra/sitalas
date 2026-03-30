@@ -16,7 +16,6 @@ class ListBirosTable
         return $table
             ->columns([
                 TextColumn::make('no_urut')
-                    ->date()
                     ->sortable(),
 
                 TextColumn::make('tanggal_surat')
