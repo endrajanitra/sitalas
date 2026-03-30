@@ -9,6 +9,8 @@ use App\Models\KodeSurat;
 use App\Models\SifatSurat;
 use App\Models\UnitPengolah;
 use App\Models\User;
+use Carbon\Carbon;
+
 class TambahSuratKeluar extends Model
 {
     use HasFactory;
@@ -35,7 +37,7 @@ class TambahSuratKeluar extends Model
         'user_id',
         'is_sopd_req',
     ];
-     protected $casts = [
+    protected $casts = [
         'tanggal_surat' => 'date',
         'is_requested' => 'boolean',
         'dokumen_asli' => 'boolean',
@@ -62,5 +64,31 @@ class TambahSuratKeluar extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Fungsi untuk generate nomor surat otomatis (Adopsi dari logika C#)
+     */
+    public static function generateNoSurat($kodeSurat, $tanggal)
+    {
+        $date = Carbon::parse($tanggal);
+        $year = $date->year;
+
+        // Mencari NoUrut tertinggi di tahun dan kode surat yang sama
+        $lastRecord = self::whereYear('tanggal_surat', $year) // sesuaikan nama kolom tanggal di DB Anda
+            ->where('kode_id', $kodeSurat)
+            ->whereNotNull('no_urut')
+            ->orderByRaw('CAST(no_urut AS UNSIGNED) DESC')
+            ->first();
+
+        $nextUrut = $lastRecord ? (int)$lastRecord->no_urut + 1 : 1;
+
+        // Format 4 digit (0001)
+        $formattedUrut = str_pad($nextUrut, 4, '0', STR_PAD_LEFT);
+
+        // Kembalikan dalam bentuk array agar bisa dipakai untuk update 2 kolom
+        return [
+            'no_urut' => $formattedUrut,
+        ];
     }
 }
