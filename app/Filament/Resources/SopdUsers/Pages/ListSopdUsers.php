@@ -4,6 +4,8 @@ namespace App\Filament\Resources\SopdUsers\Pages;
 
 use App\Filament\Resources\SopdUsers\SopdUserResource;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Actions\CreateAction;
+
 
 class ListSopdUsers extends ListRecords
 {
@@ -11,6 +13,8 @@ class ListSopdUsers extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [];
+        return [
+            CreateAction::make(),
+        ];
     }
 }

@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Filament\Resources\SopdUsers;
-
+use App\Filament\Resources\SopdUsers\Pages\CreateSopdUser;
+use App\Filament\Resources\SopdUsers\Pages\EditSopdUser;
 use App\Filament\Resources\SopdUsers\Pages\ListSopdUsers;
+use App\Filament\Resources\SopdUsers\Schemas\SopdUserForm;
 use App\Models\User;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
+use Filament\Schemas\Schema;
 
 class SopdUserResource extends Resource
 {
@@ -23,6 +26,11 @@ class SopdUserResource extends Resource
     protected static ?string $recordTitleAttribute = 'name';
 
     protected static ?string $slug = 'sopd-users';
+
+    public static function form(Schema $schema): Schema
+    {
+        return SopdUserForm::configure($schema);
+    }
 
     public static function table(Table $table): Table
     {
@@ -40,6 +48,8 @@ class SopdUserResource extends Resource
     {
         return [
             'index' => ListSopdUsers::route('/'),
+            'create' => CreateSopdUser::route('/create'),
+            'edit' => EditSopdUser::route('/{record}/edit'),
         ];
     }
 }

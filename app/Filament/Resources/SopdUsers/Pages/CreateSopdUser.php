@@ -8,4 +8,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateSopdUser extends CreateRecord
 {
     protected static string $resource = SopdUserResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
