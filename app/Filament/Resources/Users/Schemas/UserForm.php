@@ -75,11 +75,7 @@ class UserForm
                 Section::make('Pengaturan Akun')
                     ->description('Status dan hak akses pengguna')
                     ->schema([
-                        Grid::make(3)->schema([
-                            Toggle::make('sopd')
-                                ->label('User SOPD')
-                                ->default(false),
-
+                        Grid::make(1)->schema([
                             Toggle::make('active')
                                 ->label('Status Aktif')
                                 ->default(true),

@@ -14,6 +14,12 @@ class EditUser extends EditRecord
     {
         return $this->getResource()::getUrl('index');
     }
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['sopd'] = false;
+
+        return $data;
+    }
 
     protected function getHeaderActions(): array
     {
