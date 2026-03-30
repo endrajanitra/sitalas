@@ -2,8 +2,11 @@
 
 namespace App\Filament\Pages;
 
+use App\Filament\Resources\SopdPengajuans\SopdPengajuanResource;
+use App\Filament\Resources\TambahSuratKeluars\TambahSuratKeluarResource;
 use App\Models\TambahSuratKeluar;
 use BackedEnum;
+use Filament\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Toggle;
 use Filament\Notifications\Notification;
@@ -17,6 +20,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 
 class SopdReport extends Page implements HasTable
 {
@@ -45,7 +49,7 @@ class SopdReport extends Page implements HasTable
     public function table(Table $table): Table
     {
         return $table
-            ->query(fn (): Builder => $this->getTableQuery())
+            ->query(fn(): Builder => $this->getTableQuery())
             ->columns([
                 Tables\Columns\TextColumn::make('no_urut')
                     ->label('No Urt')
@@ -85,7 +89,7 @@ class SopdReport extends Page implements HasTable
 
                 Tables\Columns\IconColumn::make('upload_file')
                     ->label('File Upload')
-                    ->boolean(fn ($state) => filled($state)),
+                    ->boolean(fn($state) => filled($state)),
 
                 Tables\Columns\IconColumn::make('dokumen_asli')
                     ->label('Dokumen Asli')
@@ -114,6 +118,8 @@ class SopdReport extends Page implements HasTable
             ])
             ->filtersFormColumns(1)
             ->actions([
+                Action::make('lihat')
+                    ->url(fn($record) => SopdPengajuanResource::getUrl('view', ['record' => $record])),
                 EditAction::make()
                     ->label('Edit')
                     ->icon('heroicon-o-pencil-square')
