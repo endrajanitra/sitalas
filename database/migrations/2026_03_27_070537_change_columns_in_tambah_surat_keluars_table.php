@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tambah_surat_keluars', function (Blueprint $table) {
-            // $table->dropForeign(['klasifikasi_id']);
-            // $table->dropForeign(['kode_id']);
-            // $table->dropForeign(['direktorat_id']);
+             $table->dropForeign(['klasifikasi_id']);
+             $table->dropForeign(['kode_id']);
+             $table->dropForeign(['direktorat_id']);
 
             $table->bigInteger('klasifikasi_id', unsigned: true)
                 ->nullable()
