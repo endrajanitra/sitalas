@@ -20,6 +20,8 @@ class UnitPengolahResource extends Resource
     protected static ?string $model = UnitPengolah::class;
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
+    protected static ?string $modelLabel = 'Unit Pengolah';
+    protected static ?string $pluralModelLabel = 'Unit Pengolah';
 
     protected static ?string $navigationLabel = 'Unit Pengolah';
 
