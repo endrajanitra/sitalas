@@ -21,6 +21,8 @@ class UserResource extends Resource
     protected static string | UnitEnum | null $navigationGroup = 'Master';
 
     protected static ?string $navigationLabel = 'User';
+    protected static ?string $modelLabel = 'User';
+    protected static ?string $pluralModelLabel = 'User';
 
     protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-user';
 
