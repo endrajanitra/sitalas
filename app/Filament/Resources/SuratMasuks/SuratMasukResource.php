@@ -21,6 +21,8 @@ class SuratMasukResource extends Resource
     protected static string | UnitEnum | null $navigationGroup = 'Daftar Surat';
 
     protected static ?string $navigationLabel = 'Surat Masuk';
+    protected static ?string $modelLabel = 'Surat Masuk';
+    protected static ?string $pluralModelLabel = 'Surat Masuk';
 
     #protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
