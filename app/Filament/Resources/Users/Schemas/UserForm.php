@@ -9,6 +9,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
+use function Laravel\Prompts\select;
 
 class UserForm
 {
@@ -75,7 +76,14 @@ class UserForm
                 Section::make('Pengaturan Akun')
                     ->description('Status dan hak akses pengguna')
                     ->schema([
-                        Grid::make(1)->schema([
+                        Grid::make(2)->schema([
+                            TextInput::make('type')
+                            ->label('Role')
+                            ->required()
+                            ->datalist([
+                                'Admin',
+                                'Staf',
+                            ]),
                             Toggle::make('active')
                                 ->label('Status Aktif')
                                 ->default(true),
