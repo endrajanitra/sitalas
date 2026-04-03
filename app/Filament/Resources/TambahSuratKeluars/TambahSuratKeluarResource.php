@@ -24,6 +24,9 @@ class TambahSuratKeluarResource extends Resource
 
     protected static ?string $navigationLabel = 'Tambah';
 
+    protected static ?string $modelLabel = 'Surat Keluar';
+    protected static ?string $pluralModelLabel = 'Surat Keluar';
+
     #protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'tambah_surat_keluar';
