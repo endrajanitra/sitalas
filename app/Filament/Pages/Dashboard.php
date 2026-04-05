@@ -25,9 +25,8 @@ class Dashboard extends BaseDashboard
         return [
             \App\Filament\Widgets\UserStatsOverview::class,
             \App\Filament\Widgets\UserChartPengajuan::class,
-            #\App\Filament\Widgets\UserQuickAction::class,
             \App\Filament\Widgets\UserPengajuanTable::class,
-            #\App\Filament\Widgets\UserListBiroTable::class,
+            \App\Filament\Widgets\UserListBiroTable::class,
             ];
     }
 
