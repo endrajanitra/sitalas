@@ -20,6 +20,8 @@ class KlasifikasiResource extends Resource
     protected static ?string $model = Klasifikasi::class;
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
+    protected static ?string $modelLabel = 'Klasifikasi Surat';
+    protected static ?string $pluralModelLabel = 'Klasifikasi Surat';
 
     protected static ?string $navigationLabel = 'Klasifikasi Surat';
 

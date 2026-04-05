@@ -18,8 +18,10 @@ class SopdUserResource extends Resource
     protected static ?string $model = User::class;
 
     protected static string | UnitEnum | null $navigationGroup = 'Surat Keluar';
+    protected static ?string $modelLabel = 'Sopd User';
+    protected static ?string $pluralModelLabel = 'Sopd User';
 
-    protected static ?string $navigationLabel = 'SOPD User';
+    protected static ?string $navigationLabel = 'Sopd User';
 
     #protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-building-office-2';
 

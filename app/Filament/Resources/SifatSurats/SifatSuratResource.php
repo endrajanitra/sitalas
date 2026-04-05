@@ -20,6 +20,8 @@ class SifatSuratResource extends Resource
     protected static ?string $model = SifatSurat::class;
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
+    protected static ?string $modelLabel = 'Sifat Surat';
+    protected static ?string $pluralModelLabel = 'Sifat Surat';
 
     protected static ?string $navigationLabel = 'Sifat Surat';
 

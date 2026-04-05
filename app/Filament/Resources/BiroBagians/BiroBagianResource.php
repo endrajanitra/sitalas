@@ -22,6 +22,8 @@ class BiroBagianResource extends Resource
     protected static ?string $model = BiroBagian::class;
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
+    protected static ?string $modelLabel = 'Biro Bagian';
+    protected static ?string $pluralModelLabel = 'Biro Bagian';
 
     protected Static ?string $navigationLabel = 'Biro Bagian';
 

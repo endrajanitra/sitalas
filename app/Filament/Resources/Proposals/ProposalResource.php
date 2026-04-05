@@ -20,6 +20,8 @@ class ProposalResource extends Resource
     protected static ?string $model = Proposal::class;
 
     protected static string | UnitEnum | null $navigationGroup = 'Proposal';
+    protected static ?string $modelLabel = 'Proposal';
+    protected static ?string $pluralModelLabel = 'Proposal';
 
     protected static ?string $navigationLabel = 'Proposal';
 

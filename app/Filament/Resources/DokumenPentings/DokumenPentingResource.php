@@ -20,6 +20,8 @@ class DokumenPentingResource extends Resource
     protected static ?string $model = DokumenPenting::class;
 
     protected static string | UnitEnum | null $navigationGroup = 'Dokumen Penting';
+    protected static ?string $modelLabel = 'Dokumen Penting';
+    protected static ?string $pluralModelLabel = 'Dokumen Penting';
 
      protected static ?string $navigationLabel = 'Dokumen Penting';
 

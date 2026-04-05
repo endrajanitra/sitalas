@@ -20,6 +20,8 @@ class KodeSuratResource extends Resource
     protected static ?string $model = KodeSurat::class;
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
+    protected static ?string $modelLabel = 'Kode Surat';
+    protected static ?string $pluralModelLabel = 'Kode Surat';
 
     protected static ?string $navigationLabel = "Kode Surat";
 

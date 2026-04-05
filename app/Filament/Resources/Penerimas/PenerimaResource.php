@@ -21,6 +21,8 @@ class PenerimaResource extends Resource
     protected static ?string $model = Penerima::class;
 
     protected static string | UnitEnum | null $navigationGroup = 'Surat Masuk';
+    protected static ?string $modelLabel = 'Penerima';
+    protected static ?string $pluralModelLabel = 'Penerima';
 
     protected static ?string $navigationLabel = 'Penerima';
 

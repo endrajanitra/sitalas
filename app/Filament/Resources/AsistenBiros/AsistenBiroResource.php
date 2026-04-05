@@ -20,6 +20,8 @@ class AsistenBiroResource extends Resource
     protected static ?string $model = AsistenBiro::class;
 
     protected static string | UnitEnum | null $navigationGroup = 'Master';
+    protected static ?string $modelLabel = 'Asisten Biro';
+    protected static ?string $pluralModelLabel = 'Asisten Biro';
 
     protected static ?string $navigationLabel = 'Asisten Biro';
 

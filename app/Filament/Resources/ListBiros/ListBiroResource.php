@@ -21,6 +21,8 @@ class ListBiroResource extends Resource
 {
     protected static ?string $model = ListBiro::class;
     protected static string | UnitEnum | null $navigationGroup= 'Surat Keluar';
+    protected static ?string $modelLabel = 'List Biro';
+    protected static ?string $pluralModelLabel = 'List Biro';
 
     protected static ?string $navigationLabel = 'List Biro';
 

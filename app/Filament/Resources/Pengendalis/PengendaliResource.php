@@ -21,6 +21,8 @@ class PengendaliResource extends Resource
 {
     protected static ?string $model = Pengendali::class;
     protected static string | UnitEnum | null $navigationGroup = 'Surat Masuk';
+    protected static ?string $modelLabel = 'Pengendali';
+    protected static ?string $pluralModelLabel = 'Pengendali';
     protected static ?string $navigationLabel = 'Pengendali';
 
     #protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;

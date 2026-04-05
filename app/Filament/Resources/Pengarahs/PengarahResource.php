@@ -22,6 +22,8 @@ class PengarahResource extends Resource
     protected static ?string $model = Pengarah::class;
 
     protected static string | UnitEnum | null $navigationGroup = 'Surat Masuk';
+    protected static ?string $modelLabel = 'Pengarah';
+    protected static ?string $pluralModelLabel = 'Pengarah';
     protected static ?string $navigationLabel = 'Pengarah';
 
     #protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
