@@ -21,13 +21,13 @@ class UserStatsOverview extends BaseWidget
             Stat::make('Pengajuan Saya', TambahSuratKeluar::where('user_id', $userId)->count())
                 ->color('primary'),
 
-            Stat::make('Disetujui', TambahSuratKeluar::where('user_id', $userId)->where('status', 'approved')->count())
+            Stat::make('Disetujui', TambahSuratKeluar::where('user_id', $userId)->where('status', 'diterima')->count())
                 ->color('success'),
 
             Stat::make('Pending', TambahSuratKeluar::where('user_id', $userId)->where('status', 'pending')->count())
                 ->color('warning'),
 
-            Stat::make('Ditolak', TambahSuratKeluar::where('user_id', $userId)->where('status', 'rejected')->count())
+            Stat::make('Ditolak', TambahSuratKeluar::where('user_id', $userId)->where('status', 'ditolak')->count())
                 ->color('danger'),
         ];
     }
