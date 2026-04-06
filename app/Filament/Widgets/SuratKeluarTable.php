@@ -26,8 +26,8 @@ class SuratKeluarTable extends TableWidget
                 ->badge()
                 ->colors([
                     'warning' => 'pending',
-                    'success' => 'approved',
-                    'danger' => 'rejected',
+                    'success' => 'diterima',
+                    'danger' => 'ditolak',
                 ]),
         ];
     }

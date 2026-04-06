@@ -21,6 +21,13 @@ class Dashboard extends BaseDashboard
             \App\Filament\Widgets\SuratKeluarTable::class,
             ];
         }
+        if ($user?->type === 'staf') {
+            return [
+                \App\Filament\Widgets\StaffStatsOverview::class,
+                \App\Filament\Widgets\StaffChartSuratMasuk::class,
+                \App\Filament\Widgets\StaffSuratMasukTable::class,
+            ];
+        }
         // 🔶 USER BIASA
         return [
             \App\Filament\Widgets\UserStatsOverview::class,
